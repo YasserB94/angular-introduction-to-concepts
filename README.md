@@ -6,7 +6,7 @@ This readme are my notes troughout [this](https://angular.io/guide/architecture)
 - Uses HTML and TypeScript
 - Is written in TypeScript
 - Implements core and optional functionality as a set of TypeScript libraries that can be imported.
-
+***
 ## Fundamental Concepts
 - The basic building blocks of the Angular framework are **Angular components**.
 - Angular components are organized into **ngModules**
@@ -27,7 +27,7 @@ This readme are my notes troughout [this](https://angular.io/guide/architecture)
 - An application's **components** typically **define many views**, arranged hierarchically
 - Angular provides the **Router Service** to help us **navigate paths among views**
     - The router provides in-browser navigation
-
+***
 ## Angular Modules
 - Angular **NgModules differ from** and complement **Javascript modules**
 -  An NgModule **declares** a compilation **context** **for a set of components** that is **dedicated to:**
@@ -52,7 +52,7 @@ This readme are my notes troughout [this](https://angular.io/guide/architecture)
 - In adition **organising** NgModules **enables lazy-loading**
     - Loading modules on demand
     - Minimize startup code.
-
+***
 ## Components
 - There is always **at least one** component: the **root** component
     - Connects the component hiearchy with the DOM.
@@ -69,7 +69,7 @@ This readme are my notes troughout [this](https://angular.io/guide/architecture)
 - **Decorators** are functions that **modify** JavaScript **classes**.
     - These **attach** specific **metadata** to classes
     - This metadata **tells** the **system how the class should work**
-
+***
 ## Templates, Directives and Data binding
 - A **Template combines HTML** with **Angular markup**
     - Modifies elements before they are displayed
@@ -86,6 +86,42 @@ This readme are my notes troughout [this](https://angular.io/guide/architecture)
 - **Pipes** are funcitons that **transform data for display**
     - To improve user experience
     - For example: ```<p>{{ price | currency }}</p>```
-
+***
 ## Services and Dependency Injection
-
+- **Service** classes
+    - **Data** or logic **not associated with** a specific **view**.
+    - Data or logic that has be **shared between components**
+    - Classes are peceded by the **@Injectable()** decorator.
+        - Provides metadata that allows other providers to be injected as dependencies
+- **Dependency Injection**
+    - Keep components lean and effiecient
+        - Components do not
+            - Fetch data
+            - Validate input
+            - Log to the console
+    - These tasks are delegated to **services**
+### Routing
+- The **Router NgModule** provides a **service**
+    - Let's you **define a navigation path**
+        - Among **different states**
+        - And **different views**
+    - Is **modeled on browser navigation** conventions
+        - Uses **URL's** to reach a corresponding page
+        - **Links navigate** to a new page
+        - The **back/forward** buttons navigate trough the page's **history**
+    - **Maps** Url like paths to **views** instead of pages
+        - **Intercepts actions that** would **load a new page**
+        - **instead shows/hides view hiearchies**
+    - Rules are defined by accociating navigation paths with components
+        - Paths use URL like syntax
+        - Program logic will then further on decide what to show or hide.
+***
+## Summary 
+![Angular concept relation basic scheme](./Readme-assets/Ang-Concepts-Relation.png)
+- **A view consists of a Component && Template**
+    - A decorator on a component adds the metadata
+        - This includes a pointer to the associated Template
+        - Directives and Binding markup modify views based on data and logic
+- **The Dependency injector provides Services to a component**
+    - Such as the Router Service
+        - Allows you to define navigation.
